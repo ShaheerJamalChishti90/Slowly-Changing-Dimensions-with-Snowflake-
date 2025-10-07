@@ -44,7 +44,7 @@ We designed and implemented a **modern data pipeline** that:
 
 Below is the high-level architecture of our project:
 
-![SCD Architecture](scd-archiecture.drawio.png)
+![SCD Architecture](images/scd-archiecture.drawio.png)
 
 ### Components Involved:
 - **AWS EC2 Instance** → Hosts Docker containers running NiFi and Jupyter Notebook  
@@ -83,12 +83,32 @@ Next, we created:
 We installed **Docker** and **Docker Compose** on our EC2 instance:
 
 ```bash
+# Update
 sudo yum update -y
+
+# Install Docker
 sudo yum install docker -y
-sudo service docker start
-sudo usermod -aG docker ec2-user
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Install Docker Compose (latest version)
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" \
+  -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+# check
+docker --version
+
+nano docker-compose.yml
+sudo yum install -y libxcrypt-compat
+
+sudo docker-compose up -d
+
+docker ps
+
+mkdir FakeDataset
+
 ````
 
 ---
