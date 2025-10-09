@@ -280,7 +280,7 @@ In Progress:
 
 Here’s the complete architecture of this project:
 
-![SCD Architecture](images/scd-archiecture.drawio.png)
+![SCD Architecture](images/SCD Project Architecture.drawio.png)
 
 ---
 
